@@ -10,6 +10,7 @@ import {
   StyleSheet,
   Text,
   View,
+    ToastAndroid,
     NativeModules
 } from 'react-native';
 
@@ -23,14 +24,14 @@ export default class ReactNativeShare extends Component {
      * 3. 跳转链接
      * 4. 图片链接
      * 5. 分享平台
-     * 6. 分享结果回调
+     * 6. 分享结果回调`
      */
     _share() {
         UShare.share('标题','内容',
-         'http://baidu.com','http://dev.umeng.com/images/tab2_1.png', SharePlatform.QQ,
+         'http://www.baidu.com','https://dev.umeng.com/images/tab2_1.png', SharePlatform.SINA,
             (code, message) => {
                 // 分享成功：code=200
-                // ToastAndroid.show(message,ToastAndroid.SHORT);
+                alert(code);
                 
         });
     }
@@ -38,7 +39,7 @@ export default class ReactNativeShare extends Component {
     return (
         <View style={styles.container}>
           <Text style={styles.welcome} onPress={this._share.bind(this)}>
-            分享
+              分享
           </Text>
         </View>
     );
